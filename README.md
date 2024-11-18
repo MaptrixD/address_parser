@@ -11,45 +11,41 @@ City
 State
 Pincode
 Category
+
 Returns the parsed result in JSON format.
 Utilizes Amazon Bedrock LLM for processing the input.
 Prerequisites
-Python: Python 3.8 or higher installed.
+
+Python: Python 3.10 or higher installed.
 AWS Credentials: Ensure AWS credentials are set up to access Amazon Bedrock.
 Dependencies: Install the required Python packages using the requirements.txt file.
 Installation
 1. Clone the Repository
-bash
-Copy code
+
 git clone https://github.com/MaptrixD/address_parser.git
 cd address_parser
 2. Create and Activate a Virtual Environment
-bash
-Copy code
+
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 3. Install Dependencies
-bash
-Copy code
+
 pip install -r requirements.txt
 Configuration
 1. Update the AWS Region
 Ensure the correct AWS region is specified in the REGION_NAME variable in the addressparserapi.py file:
 
-python
-Copy code
+
 REGION_NAME = 'ap-south-1'  # Update if required
 2. Update the Model ID
 Set the appropriate Amazon Bedrock model ID in the MODEL_ID variable:
 
-python
-Copy code
+
 MODEL_ID = 'meta.llama3-70b-instruct-v1:0'  # Update as needed
 Running the API
 To start the API server, run the following command:
 
-bash
-Copy code
+
 uvicorn addressparserapi:app --host 0.0.0.0 --port 9005 --reload
 The API will be accessible at: http://localhost:9005
 
@@ -60,14 +56,12 @@ Method: POST
 Content-Type: application/json
 
 Request Body
-json
-Copy code
+
 {
     "address_string": "123 Main Street, Downtown, New York, NY 10001"
 }
 Response
-json
-Copy code
+
 {
     "parsed_address": {
         "POI Name": "None",
@@ -91,12 +85,10 @@ Development
 Hot Reload
 To enable hot-reloading during development, use the --reload option:
 
-bash
-Copy code
+
 uvicorn addressparserapi:app --host 0.0.0.0 --port 9005 --reload
 Dependencies
 Dependencies are managed through requirements.txt. Install them with:
 
-bash
-Copy code
+
 pip install -r requirements.txt
